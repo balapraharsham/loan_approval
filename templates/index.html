@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Loan Approval Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <h2>Loan Approval Prediction</h2>
+
+    <form action="/predict" method="POST">
+        <input type="number" name="income" placeholder="Applicant Income" required>
+        <input type="number" name="loan_amount" placeholder="Loan Amount" required>
+        <input type="number" name="credit_history" placeholder="Credit History (0/1)" required>
+        <input type="number" name="dependents" placeholder="Dependents" required>
+        <input type="number" name="property_area" placeholder="Property Area (Encoded)" required>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+        <div class="result">
+            {{ prediction_text }}
+        </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
